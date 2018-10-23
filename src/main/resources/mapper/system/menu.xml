@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pd.manage.dao.system.IMenuDao">
+	
+	<select id="findMenuByUserId" parameterType="java.lang.Integer" resultType="com.pd.manage.model.system.MenuDto">
+		SELECT DISTINCT C.ID id,C.PID pid,C.`NAME` name,C.URL url,C.HIBER hiber,C.PERMS perms FROM SYS_USER_ROLE A
+		join SYS_ROLE SR ON SR.ID=A.ROLE_ID AND SR.IS_DELETE=0 AND SR.TYPE=1 AND A.U_ID=#{uid} 
+		JOIN SYS_ROLE_AUTHORITY B ON B.ROLE_ID=SR.ID and B.TYPE=#{type}
+		JOIN SYS_MENU C ON C.ID=B.MENU_ID AND C.IS_DELETE=0
+		WHERE A.TYPE=#{type} ORDER BY C.HIBER,C.ORDERS
+	</select>
+
+    <select id="findSysMenuButtonByUserId" parameterType="java.lang.Integer" resultType="com.pd.manage.model.system.ButtonDto">
+        SELECT DISTINCT C.MENU_ID mid,C.`NAME` name,C.ID id,C.PERMS perms FROM SYS_USER_ROLE A
+            join SYS_ROLE SR ON SR.ID=A.ROLE_ID AND SR.IS_DELETE=0 AND SR.TYPE=1 AND A.U_ID=#{uid}
+            JOIN SYS_ROLE_AUTHORITY B ON B.ROLE_ID=SR.ID and B.TYPE=#{type}
+            JOIN SYS_MENU_BUTTON C ON C.ID=B.MENU_ID AND C.IS_DELETE=0
+        WHERE A.TYPE=#{type} ORDER BY C.MENU_ID,C.ID ASC
+    </select>
+
+    <select id="findSysMenu" parameterType="java.lang.Integer" resultType="com.pd.manage.model.system.MenuDto">
+        SELECT DISTINCT C.ID id,C.PID pid,C.`NAME` name,C.URL url,C.HIBER hiber,C.PERMS perms FROM SYS_USER_ROLE A
+            join SYS_ROLE SR ON SR.ID=A.ROLE_ID AND SR.IS_DELETE=0 AND SR.TYPE=1 AND A.U_ID=#{uid}
+            JOIN SYS_ROLE_AUTHORITY B ON B.ROLE_ID=SR.ID and B.TYPE=1
+            JOIN SYS_MENU C ON C.ID=B.MENU_ID AND C.IS_DELETE=0
+        WHERE A.TYPE=1 ORDER BY C.HIBER,C.ORDERS
+    </select>
+
+	<select id="findSysMenuButton" parameterType="java.lang.Integer" resultType="com.pd.manage.model.system.ButtonDto">
+		SELECT DISTINCT C.MENU_ID mid,C.`NAME` name,C.ID id,C.PERMS perms FROM SYS_USER_ROLE A
+		join SYS_ROLE SR ON SR.ID=A.ROLE_ID AND SR.IS_DELETE=0 AND SR.TYPE=1 AND A.U_ID=#{uid}
+		JOIN SYS_ROLE_AUTHORITY B ON B.ROLE_ID=SR.ID and B.TYPE=1
+		JOIN SYS_MENU_BUTTON C ON C.ID=B.MENU_ID AND C.IS_DELETE=0
+		WHERE A.TYPE=1 ORDER BY C.MENU_ID,C.ID ASC
+	</select>
+	
+	<select id="findAppMenu" parameterType="java.lang.Integer" resultType="com.pd.manage.model.system.MenuDto">
+		SELECT DISTINCT C.ID id,C.PID pid,C.`NAME` name,C.URL url,C.HIBER hiber,C.`CODE` code,C.ICO ico,C.PERMS perms
+		FROM SYS_USER_ROLE A 
+		join SYS_ROLE SR ON SR.ID=A.ROLE_ID AND SR.IS_DELETE=0 AND SR.TYPE=2 AND A.U_ID=#{uid}
+		JOIN APP_ROLE_AUTHORITY B ON B.ROLE_ID=A.ROLE_ID 
+		JOIN APP_MENU C ON C.ID=B.MENU_ID AND C.IS_DELETE=0
+		WHERE A.TYPE=2 ORDER BY C.HIBER,C.ORDERS
+	</select>
+</mapper>
+	
+
+	

@@ -1,4 +1,4 @@
-package com.pd.springbootmanage;
+package com.pd;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;

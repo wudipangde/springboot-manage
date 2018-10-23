@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pd.manage.dao.system.IRoleDao">
+	
+	<select id="findAuthorityRoleByUserId"  resultType="com.pd.manage.model.system.RoleDto">
+        select A.* from sys_role A join sys_user_role B
+                ON A.ID=B.ROLE_ID WHERE B.U_ID=#{uid} and B.TYPE=#{type}
+	</select>
+
+</mapper>
+	
+
+	
