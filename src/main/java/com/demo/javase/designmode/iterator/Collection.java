@@ -6,5 +6,7 @@ package com.demo.javase.designmode.iterator;
  * @date 2018/10/23
  */
 public interface Collection {
-//	public
+	public Iterator iterator();
+	public Object get(int i);
+	public int size();
 }
