@@ -13,9 +13,9 @@ spring:
           #基本属性
           # 主库数据源
           #master:
-          url: jdbc:mysql://localhost:3306/ZHS_ERP?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
+          url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
           username: root
-          password: ablejava
+          password: root
           # 从库数据源
           #slave:
               # 从数据源开关/默认关闭
