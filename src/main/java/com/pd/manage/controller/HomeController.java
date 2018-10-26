@@ -1,11 +1,13 @@
 package com.pd.manage.controller;
 
+import com.pd.manage.dao.system.IEmployeeDao;
 import com.pd.manage.dao.system.IMenuDao;
 import com.pd.manage.dao.system.IRoleDao;
 import com.pd.manage.model.system.ButtonDto;
 import com.pd.manage.model.system.EmployeeDto;
 import com.pd.manage.model.system.MenuDto;
 import com.pd.manage.model.system.RoleDto;
+import com.pd.manage.service.system.IEmployeeService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
@@ -15,6 +17,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -34,6 +37,8 @@ public class HomeController {
 	private IRoleDao roleDao;
 	@Resource
 	private IMenuDao menuDao;
+	@Resource
+	private IEmployeeService employeeService;
 
     @RequestMapping({"/","/index"})
     public String index(){
@@ -89,6 +94,14 @@ public class HomeController {
 		map.put("blist",blist);
 		map.put("mlist",mlist);
 		return map;
+	}
+
+	@GetMapping("/getEmployeeInfo")
+	@ResponseBody
+	public EmployeeDto getEmployeeInfo() {
+		EmployeeDto employeeDto = (EmployeeDto) (SecurityUtils.getSubject().getPrincipal());
+		Integer currentUserId = employeeDto.getId();
+		return employeeService.findEmployeeById(currentUserId);
 	}
 
 }

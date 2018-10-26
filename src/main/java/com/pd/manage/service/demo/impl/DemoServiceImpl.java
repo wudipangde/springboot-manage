@@ -1,4 +1,4 @@
-package com.pd.manage.service.impl;
+package com.pd.manage.service.demo.impl;
 
 import com.alibaba.dubbo.config.annotation.Service;
 import com.alibaba.dubbo.rpc.RpcContext;
