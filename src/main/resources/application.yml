@@ -48,7 +48,8 @@ spring:
   # Spring Boot Redis
   redis:
     # Redis服务器地址
-    host: 127.0.0.1
+    host: 192.168.9.170
+#    host: 127.0.0.1
     # Redis服务器连接端口
     port: 19000
     # Redis服务器连接密码（默认为空）
@@ -68,6 +69,13 @@ spring:
         max-idle: 8
         # 连接池中的最小空闲连接
         min-idle: 0
+
+  # rabbitmq
+  rabbitmq:
+    host: 192.168.69.228
+    port: 5672
+    username: admin
+    password: admin
 
 mybatis:
   mapper-locations: classpath:mapper/*/*.xml
@@ -155,3 +163,4 @@ management:
     web:
       exposure:
         include: "*"
+
