@@ -10,7 +10,7 @@ package com.demo.javase.arithmetic.sort;
  * @date 2018/10/29
  */
 public class MergeSort {
-	public void mergeSort(int[] a,int left,int right){
+	public static void mergeSort(int[] a,int left,int right){
 		int t=1;
 		int size=right-left+1;
 		while(t<size){
@@ -49,6 +49,14 @@ public class MergeSort {
 		}
 		for(int i=p;i<=r;i++){
 			data[i]=B[i];
+		}
+	}
+
+	public static void main(String[] args) {
+		int[] a=new int[]{1,3,5,9,7,100,4};
+		mergeSort(a,0,a.length-1);
+		for(int b:a){
+			System.out.print(b+",");
 		}
 	}
 }
