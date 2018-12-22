@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 
 /**
@@ -18,6 +20,7 @@ import java.util.function.Predicate;
  */
 public class Test1 {
 	public static void main(String[] args) {
+		List<String> collected =Stream.of("a","b","c","d").collect(Collectors.toList());
 		Ilambda1 ilambda1= () -> System.out.println("测试无参");
 		ilambda1.print();
 
