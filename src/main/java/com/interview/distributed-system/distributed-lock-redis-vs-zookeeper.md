@@ -319,7 +319,7 @@ public class ZooKeeperDistributedLock implements Watcher {
 		     if(lockNode.equals(locksRoot + “/” + locks.get(i))) {
 	         	 previousLockIndex = i - 1;
 		         break;
-		    }
+		      }
 	   }
 	   
 	   this.waitNode = locks.get(previousLockIndex);
