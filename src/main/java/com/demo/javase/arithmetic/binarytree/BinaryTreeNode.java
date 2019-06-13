@@ -1,5 +1,8 @@
 package com.demo.javase.arithmetic.binarytree;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
 /**
  * @author wxw
  * @Description:
@@ -12,8 +15,9 @@ package com.demo.javase.arithmetic.binarytree;
  * 完全二叉树可以看成是可以有若干额外向左靠的叶子节点的完美二叉树。疑问：完美二叉树和满二叉树的区别？（
  * @date 2018/10/29
  */
-public class TreeNode {
-	int value;
-	TreeNode left;
-	TreeNode right;
+@Data@AllArgsConstructor
+public class BinaryTreeNode {
+	int data;
+	BinaryTreeNode left;
+	BinaryTreeNode right;
 }

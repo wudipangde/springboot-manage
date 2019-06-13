@@ -10,4 +10,5 @@ public class ArrayStack {
 	private int top;
 	private int size;
 
+	String a="1111";
 }
