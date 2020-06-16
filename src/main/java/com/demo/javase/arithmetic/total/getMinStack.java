@@ -6,4 +6,6 @@ package com.demo.javase.arithmetic.total;
  * @date ：2020-06-16 17:09
  */
 public class getMinStack {
+
+    
 }
