@@ -7,5 +7,5 @@ package com.demo.javase.arithmetic.total;
  */
 public class getMinStack {
 
-    
+
 }
